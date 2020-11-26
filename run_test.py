@@ -9,7 +9,7 @@
 import unittest
 import HTMLrunnerTest
 
-filename = 'D:\HttpRunner\Reports\payment_test.html'    #测试报告的存放路径及文件名
+filename = r'D:\work\c2\vover\report\payment_test.html'    #测试报告的存放路径及文件名
 fp = open(filename, 'wb')    # 创测试报告html文件，此时还是个空文件
 #自动生成测试套件
 suite = unittest.defaultTestLoader.discover('./data/',pattern='*.py')

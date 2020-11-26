@@ -15,7 +15,7 @@ class TestCase(unittest.TestCase):
         pass
 
     def test_add1(self):
-        payment = 'YFK202011090079'
+        payment = 'YFK202011090081'
         f'''查询付款单{payment}信息'''
         url = "https://gateway.dev.vevor.net/scp-procurement-service/controller-procurementPaymentOpsService/front/getList"
         params = {
@@ -162,7 +162,7 @@ if __name__ == "__main__":
     import unittest
     import HTMLrunnerTest
 
-    filename = 'D:\HttpRunner\Reports\ipayment_test.html'  # 测试报告的存放路径及文件名
+    filename = r'D:\vover\reports\ipayment_test.html'  # 测试报告的存放路径及文件名
     fp = open(filename, 'wb')  # 创测试报告html文件，此时还是个空文件
     # 自动生成测试套件
     suite = unittest.defaultTestLoader.discover('./data/', pattern='*.py')
