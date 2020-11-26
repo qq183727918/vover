@@ -23,7 +23,7 @@
       url: /scp-procurement-service/controller-procurementPaymentOpsService/front/getList?type=1&currentPage=1&pageSize=10
       method: GET
       params:
-        paymentOrderSn: YFK202011090080
+        paymentOrderSn: YFK202011090083
     extract:
       - id: content.data.0.id
 
@@ -52,9 +52,9 @@
     request:
       url: /scp-procurement-service/controller-procurementPaymentOpsService/front/matchSave
       method: POST
-    params:
-      ids: [$id]
-      receiptList: [$receiptList]
+      params:
+        ids: $id
+        receiptList: $receiptList
 
 - test:
     name: 付款单作废
