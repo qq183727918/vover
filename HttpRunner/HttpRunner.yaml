@@ -1,0 +1,71 @@
+- config:
+    name: SCP API
+    request:
+      base_url: https://gateway.dev.vevor.net
+    hearders:
+      - Content-Type: application/json
+
+- test:
+    name: 移款单单号查询
+    request:
+      url: /scp-procurement-service/controller-scpMoveAmountService/front/list
+      method: GET
+      params:
+        currentPage: 1
+        pageSize: 10
+        moveNo: YKD202011090003
+    extract:
+      - usePaymentNo: content.data.list.0.usePaymentNo
+
+- test:
+    name: 付款单单号查询
+    request:
+      url: /scp-procurement-service/controller-procurementPaymentOpsService/front/getList?type=1&currentPage=1&pageSize=10
+      method: GET
+      params:
+        paymentOrderSn: YFK202011090080
+    extract:
+      - id: content.data.0.id
+
+- test:
+    name: 付款单查看发票信息
+    request:
+      url: /scp-procurement-service/controller-procurementPaymentOpsService/front/matchInvoice
+      method: POST
+      params:
+        ids: $id
+
+- test:
+    name: 一键匹配发票
+    request:
+      url: /scp-procurement-service/controller-procurementPaymentOpsService/front/automaticMatching
+      method: POST
+      params:
+        ids: $id
+    extract:
+      - receiptList: content.data.receiptList.0
+
+- test:
+    name: 匹配发票保存
+    hearders:
+      - Content-Type: application/json
+    request:
+      url: /scp-procurement-service/controller-procurementPaymentOpsService/front/matchSave
+      method: POST
+    params:
+      ids: [$id]
+      receiptList: [$receiptList]
+
+- test:
+    name: 付款单作废
+    request:
+      url: /scp-procurement-service/controller-procurementPaymentOpsService/front/nullify
+      method: POST
+      json:
+        [63]
+
+- test:
+    name: 付款单驳回
+    request:
+      url: /scp-procurement-service/controller-procurementPaymentOpsService/front/reject?ids=173&reason=草率了
+      method: POST

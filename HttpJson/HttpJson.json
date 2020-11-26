@@ -1,0 +1,41 @@
+[
+  {
+    "config": {
+      "name": "SCP",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "request": {
+        "base_url": "https://gateway.dev.vevor.net"
+      }
+    }
+  },
+  {
+    "test": {
+      "name": "移款单单号查询",
+      "request": {
+        "url": "/scp-procurement-service/controller-scpMoveAmountService/front/list",
+        "method": "GET",
+        "params": {
+          "currentPage": 1,
+          "pageSize": 10,
+          "moveNo": "YKD202011090003"
+        }
+      }
+    }
+  },
+  {
+    "test": {
+      "name": "付款单查询",
+      "request": {
+        "url": "/scp-procurement-service/controller-procurementPaymentOpsService/front/getList?type=1",
+        "method": "GET",
+        "params": {
+          "paymentOrderSn": "YFK202011090083",
+          "currentPage": 1,
+          "pageSize": 10
+        }
+      }
+    }
+  }
+]
