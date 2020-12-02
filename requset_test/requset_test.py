@@ -79,3 +79,5 @@ for i in range(7359):
     with open('./shangpin.docx', 'a', encoding='utf-8') as h:
         h.writelines(k)
 # pprint.pprint(re)
+
+
